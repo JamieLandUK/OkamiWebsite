@@ -7,3 +7,65 @@
     font-family: Otsutome;
     src: url('Otsutome.ttf');
 }
+
+#head img {
+    width: 30%;
+    position: relative;
+    left: 40%;
+}
+
+#intro1 img {
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#intro1 img:hover {
+    opacity: 0.7;
+}
+
+#intromodal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgb(0,0,0,0.9);
+}
+
+#intromodal .modal-content {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    animation-name: zoom;
+    animation-duration: 0.6s;
+}
+
+#intromodal .close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #F1F1F1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+#intromodal .close:hover,
+#intromodal .close:focus {
+    color: #BBBBBB;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 700px) {
+    #intromodal .modal-content {
+        width: 100%;
+    }
+}
