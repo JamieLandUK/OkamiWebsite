@@ -12,6 +12,7 @@
 		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script type="text/javascript" src="js/jquery.waypoints.min.js"></script>
 		<script type="text/javascript" src="js/jquery.sticky.js"></script>
+		<script type="text/javascript" src="js/gallery.js"></script>
 		<script type="text/javascript" src="js/main.js"></script>
 	</head>
 	
@@ -85,18 +86,22 @@
 			</div>
 
 			<div id="gallery">
+				<script type="text/javascript">
+					$(document).ready(function(){
+						CreateGallery();
+					});
+				</script>
 				<div id="scrollbox">
-					<ul>
+					<ul class="characters">
 						<li><a class="current">Amaterasu</a></li>
-						<li><a>Issun</a></li>
-						<li><a>Susano</a></li>
-						<li><a>Orochi</a></li>
 					</ul>
 				</div>
-				<img>
-				<p></p>
-				<p></p>
-				<p></p>
+				<div id="gallerypreload"></div>
+				<div id="galleryviewer">
+					<img id="gallerypic">
+					<p id="galleryintro"></p>
+					<p id="gallerystory"></p>
+				</div>
 			</div>
 
 			<div class="pageend">

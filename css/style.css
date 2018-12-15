@@ -69,3 +69,7 @@
         width: 100%;
     }
 }
+
+.gallerypreload {
+    display: none;
+}
