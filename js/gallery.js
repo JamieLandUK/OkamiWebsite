@@ -9,7 +9,7 @@ function CreateGallery() {
             character_intro[i] = data.character[i].intro;
             character_story[i] = data.character[i].story;
 
-            $('ul#characters').append('<li><a>'+ data.character[i].name +'</a></li>');
+            $('.scrollbox ul').append('<li><a href="/">'+ data.character[i].name +'</a></li>');
             if (i == data.characters.length-1) {
                 SetUpGallery();
             }
