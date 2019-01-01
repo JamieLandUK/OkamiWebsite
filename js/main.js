@@ -4,4 +4,6 @@ $(document).ready(function() {
 
 function init() {
 	console.log("initialised");
+
+	$(".scroller a").preventDefault();
 }

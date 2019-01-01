@@ -1,17 +1,35 @@
 @font-face {
     font-family: Nagayama;
-    src: url('Nagayama.otf');
+    src: url('../Nagayama.otf');
 }
 
 @font-face {
     font-family: Otsutome;
-    src: url('Otsutome.ttf');
+    src: url('../Otsutome.ttf');
 }
 
-#head img {
-    width: 30%;
+html {
+    background: #222;
+}
+
+header {
+    background-image: url("../images/bg_header.png");
+    background-repeat: no-repeat;
+    background-size: 80%;
+    background-position: center;
+}
+
+header img {
+    width: 20%;
     position: relative;
-    left: 40%;
+    left: 25%;
+}
+
+#main {
+    background-image: url("../images/bg_body.png");
+    background-repeat: repeat-y;
+    background-size: 80%;
+    background-position: center;
 }
 
 #intro1 img {
@@ -63,6 +81,7 @@
     text-decoration: none;
     cursor: pointer;
 }
+
 
 @media only screen and (max-width: 700px) {
     #intromodal .modal-content {
