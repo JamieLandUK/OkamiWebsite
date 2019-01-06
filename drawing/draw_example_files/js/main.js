@@ -54,21 +54,6 @@ function Init() {
 		}
 	}));
 	
-	// update the line_width stroke width from input on change
-	//remember you have already got the element but need get the value.
-	//line_widthval = line_width.value;
-   
-	
-	// get line_colour value from html colour input on change
-    
-
-	
-	//mouse down listener with ananymouse function to capture the event data
-	// event data can be the mouse x and y to pass to your draw function
-	// you also need to set the boolean to true to allow drawing with mousePressed = true;
-
-    
-
     //mouse move
 	// call draw function
 	// check if mouse pressed        
@@ -101,10 +86,10 @@ function Draw(x, y, isDown, isCrayon) {
 			ctx.beginPath();
 			ctx.moveTo(lastX, lastY);
 			ctx.lineTo(x, y);
-			ctx.strokeStyle = linecolour;
+			ctx.lineJoin = "round";
 			ctx.lineWidth = line_widthval;
-			ctx.stroke();
 			ctx.closePath();
+			ctx.stroke();
 		}
     }
 	//must update lastx and y to use for move to and line to
