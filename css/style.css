@@ -71,7 +71,11 @@ header img {
 }
 
 .scroller img {
-    width: 7.5%;
+    width: 5%;
+}
+
+.scroller_d {
+    margin-bottom: 6%;
 }
 
 #main {
@@ -124,6 +128,27 @@ header img {
     margin-top: 10%;
 
     font-size: 1.2rem;
+}
+
+#drawingui {
+    display: block;
+    margin-left: 25%;
+    margin-right: 25%;
+    border: solid #000000;
+}
+
+#drawingmain canvas {
+    width: 55%;
+    height: 55%;
+    background-color: #cacaca;
+    border: solid #000000;
+    margin-left: 21.75%;
+    margin-top: 2%;
+}
+
+#drawingbackgrounds img {
+    width: 70px;
+    position: center;
 }
 
 .gallerypreload {
