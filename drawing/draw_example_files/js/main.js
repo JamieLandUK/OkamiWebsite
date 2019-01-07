@@ -37,21 +37,13 @@ function Init() {
 		console.log(line_width.value);
 		line_widthval = line_width.value;
 	}));
-	
-	canvas.addEventListener("click", (function (e) {
-		x = e.pageX - this.offsetLeft;
-		y = e.pageY - this.offsetTop;
-		console.log('x=', x, ' y=', y);
-	}));
 
 	canvas.addEventListener("mousedown", (function (e) {
 		mousePressed = true;
-		if (crayon) {
-			Draw(x, y, true, true);
-		}
-		else {
-			Draw(x, y, true, false);
-		}
+		x = e.pageX - this.offsetLeft;
+		y = e.pageY - this.offsetTop;
+		console.log('x=', x, ' y=', y);
+		Draw(x, y, true);
 	}));
 	
     //mouse move
@@ -59,7 +51,10 @@ function Init() {
 	// check if mouse pressed        
 	canvas.addEventListener("mousemove", (function (e) {
 		if (mousePressed) {
-			Draw(x, y, false, false);
+			x = e.pageX - this.offsetLeft;
+			y = e.pageY - this.offsetTop;
+			console.log('x=', x, ' y=', y);
+			Draw(x, y, true);
 		}
 	}));
 	
@@ -67,6 +62,10 @@ function Init() {
 	// stop drawing with  with mousePressed = false;
 	canvas.addEventListener("mouseup", (function (e) {
 		mousePressed = false;
+		x = e.pageX - this.offsetLeft;
+		y = e.pageY - this.offsetTop;
+		console.log('x=', x, ' y=', y);
+		Draw(x, y, false);
 	}));
 	
 	//mouseleave
@@ -76,11 +75,11 @@ function Init() {
 }
 
 //draw function
-function Draw(x, y, isDown, isCrayon) {
+function Draw(x, y, isPressed) {
 
-    if (isDown) {
-        if (isCrayon) {
-
+    if (isPressed) {
+        if (crayon) {
+			
 		}
 		else {
 			ctx.beginPath();
@@ -91,7 +90,7 @@ function Draw(x, y, isDown, isCrayon) {
 			ctx.closePath();
 			ctx.stroke();
 		}
-    }
+	}
 	//must update lastx and y to use for move to and line to
     lastX = x;
     lastY = y;

@@ -20,11 +20,6 @@ function init() {
 	}));
 
 	$("#drawingmain canvas").bind({
-		click: (function (e) {
-			x = e.pageX;
-			y = e.pageY;
-			console.log('x=', x, ' y=', y);
-		}),
 		mousedown: (function (e) {
 			canvas.addEventListener("mousedown", (function (e) {
 				mouse_pressed = true;
@@ -44,6 +39,10 @@ function init() {
 		})
 	});
 }
+
+// x = e.pageX - this.offsetLeft;
+// y = e.pageY - this.offsetTop;
+// console.log('x=', x, ' y=', y);
 
 function Draw(x, y, isDown) {
 	if (isDown) {
