@@ -14,46 +14,44 @@ function init() {
 	ctx = canvas.getContext("2d");
 	line_width = $("#drawing_width");
 
-	line_width.addEventListener("change", (function (e) {
+	$("#line_width").bind("change", (function (e) {
 		console.log(e.value);
 		line_width_value = e.value;
 	}));
 
-
-	canvas.addEventListener("click", (function (e) {
-		x = e.pageX;
-		y = e.pageY;
-		console.log('x=', x, ' y=', y);
-	}));
-
-	canvas.addEventListener("mousedown", (function (e) {
-		mouse_pressed = true;
-
-		draw(x, y, true);
-	}));
-
-	canvas.addEventListener("mousemove", (function (e) {
-		if (mouse_pressed) {
-			Draw(e.pageX, e.pageY, true);
-		}
-	}))
-
-	canvas.addEventListener("mouseup", (function (e) {
-		mouse_pressed = false;
-	}));
-
-	canvas.addEventListener("mouseleave", (function (e) {
-		mouse_pressed = false;
-	}));
+	$("#drawingmain canvas").bind({
+		click: (function (e) {
+			x = e.pageX;
+			y = e.pageY;
+			console.log('x=', x, ' y=', y);
+		}),
+		mousedown: (function (e) {
+			canvas.addEventListener("mousedown", (function (e) {
+				mouse_pressed = true;
+				Draw(x, y, true);
+			}));
+		}),
+		mousemove: (function (e) {
+			if (mouse_pressed) {
+				Draw(e.pageX, e.pageY, true);
+			}
+		}),
+		mouseup: (function (e) {
+			mouse_pressed = false;
+		}),
+		mouseleave: (function (e) {
+			mouse_pressed = false;
+		})
+	});
 }
 
 function Draw(x, y, isDown) {
 	if (isDown) {
 		ctx.beginPath();
-		ctx.moveTo(lastX, lastY);
+		ctx.moveTo(prev_x, prev_y);
 		ctx.lineTo(x, y);
 		ctx.lineJoin = "round";
-		ctx.lineWidth = line_widthval;
+		ctx.lineWidth = line_width_value;
 		ctx.closePath();
 		ctx.stroke();
 	}
@@ -66,8 +64,8 @@ function Draw(x, y, isDown) {
 	ctx.closePath();
 	ctx.stroke();
 	*/
-	lastX = x;
-	lastY = y;
+	prev_x = x;
+	prev_y = y;
 }
 
 function Clear() {
