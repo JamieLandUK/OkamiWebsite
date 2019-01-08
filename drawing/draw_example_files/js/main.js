@@ -43,7 +43,12 @@ function Init() {
 		x = e.pageX - this.offsetLeft;
 		y = e.pageY - this.offsetTop;
 		console.log('x=', x, ' y=', y);
-		Draw(x, y, true);
+		if (crayon) {
+			Draw(x, y, true);
+		}
+		else {
+			Draw(x, y, false);
+		}
 	}));
 	
     //mouse move
@@ -62,10 +67,6 @@ function Init() {
 	// stop drawing with  with mousePressed = false;
 	canvas.addEventListener("mouseup", (function (e) {
 		mousePressed = false;
-		x = e.pageX - this.offsetLeft;
-		y = e.pageY - this.offsetTop;
-		console.log('x=', x, ' y=', y);
-		Draw(x, y, false);
 	}));
 	
 	//mouseleave
@@ -79,14 +80,18 @@ function Draw(x, y, isPressed) {
 
     if (isPressed) {
         if (crayon) {
-			
+			ctx.globalAlpha = 0.8;
+			ctx.drawImage(crayonTextureImage, x-20, y-20, line_widthval*1.5, line_widthval*1.5);
 		}
 		else {
+			ctx.globalAlpha = 1;
 			ctx.beginPath();
+			ctx.strokeStyle = linecolour;
+			ctx.fillStyle = linecolour;
+			ctx.lineWidth = line_widthval;
+			ctx.lineJoin = "round";
 			ctx.moveTo(lastX, lastY);
 			ctx.lineTo(x, y);
-			ctx.lineJoin = "round";
-			ctx.lineWidth = line_widthval;
 			ctx.closePath();
 			ctx.stroke();
 		}

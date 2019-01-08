@@ -1,18 +1,21 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
 html {
     background: #222;
     font-family: Otsutome, serif;
     font-size: 20px;
     scroll-behavior: smooth;
-    
-    /*overflow: hidden;
-    height: 100%;
-    */
+    box-sizing: border-box;
+    width: 100%;
 }
 
-/*
-box-sizing: borderbox;
-padding to the sides
-*/
+body {
+    margin-left: 20%;
+    margin-right: 20%;
+}
 
 @media screen and (max-width: 700px) {
     html {
@@ -23,7 +26,7 @@ padding to the sides
 header {
     background-image: url("../images/bg_header.png");
     background-repeat: no-repeat;
-    background-size: 80%;
+    background-size: 100%;
     background-position: center;
 }
 
@@ -34,28 +37,29 @@ header img {
     left: 39.5%;
 }
 
-.topmenu {
+#topmenu {
     position: relative;
     left: 34.25%;
     z-index: 999;
     background: url("../images/navscroll.png") no-repeat;
     background-size: 30%;
     padding: 20px;
+    overflow: hidden;
 }
 
-.topmenu ul {
+#topmenu ul {
     list-style-type: none;
     margin: 0;
     padding-left: 2.5%;
     overflow: hidden;
 }
 
-.topmenu li {
+#topmenu li {
     float: left;
     font-size: 1.5rem;
 }
 
-.topmenu a {
+#topmenu a {
     display: block;
     padding: 5%;
     color: #000;
@@ -64,30 +68,33 @@ header img {
     padding: 0.6rem 0.7rem;
 }
 
-.topmenu .currentpage {
+#topmenu .currentpage {
     text-decoration: underline;
     font-weight: bold;
     color: rgb(204, 62, 62);
 }
 
-.scroller {
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+#scroller {
+    float: left;
     position: relative;
     left: 47%;
 }
 
-.scroller img {
+#scroller img {
     width: 50px;
     height: auto;
-}
-
-.scroller_d {
-    margin-bottom: 6%;
 }
 
 #main {
     background-image: url("../images/bg_body.png");
     background-repeat: repeat-y;
-    background-size: 80%;
+    background-size: 100%;
     background-position: center;
 }
 
@@ -162,13 +169,12 @@ header img {
 }
 
 #footer {
-    position: absolute;
     display: block;
     width: 100%;
     background-image: url("../images/bg_footer.png");
     background-repeat: no-repeat;
     background-position: center;
-    background-size: 80%;
+    background-size: 100%;
 }
 
 #footer p {

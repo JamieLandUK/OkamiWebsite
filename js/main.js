@@ -8,7 +8,7 @@ var line_width_value = 1;
 var brushImage = new Image();
 
 function init() {
-	brushImage.src = "not yet";
+	brushImage.src = "./images/test1.png";
 
 	canvas = $("#drawingmain canvas")[0];
 	ctx = canvas.getContext("2d");
@@ -21,13 +21,15 @@ function init() {
 
 	$("#drawingmain canvas").bind({
 		mousedown: (function (e) {
-			canvas.addEventListener("mousedown", (function (e) {
-				mouse_pressed = true;
-				Draw(x, y, true);
-			}));
+			mouse_pressed = true;
+			x = e.pageX - this.offsetLeft;
+			y = e.pageY - this.offsetTop;
+			Draw(x, y, true);
 		}),
 		mousemove: (function (e) {
 			if (mouse_pressed) {
+				x = e.pageX - this.offsetLeft;
+				y = e.pageY - this.offsetTop;
 				Draw(e.pageX, e.pageY, true);
 			}
 		}),
@@ -46,13 +48,8 @@ function init() {
 
 function Draw(x, y, isDown) {
 	if (isDown) {
-		ctx.beginPath();
-		ctx.moveTo(prev_x, prev_y);
-		ctx.lineTo(x, y);
-		ctx.lineJoin = "round";
-		ctx.lineWidth = line_width_value;
-		ctx.closePath();
-		ctx.stroke();
+		ctx.globalAlpha = 0.8;
+		ctx.drawImage(brushImage, x, y, line_width_value, line_width_value);
 	}
 	/*
 	ctx.beginPath();
@@ -71,6 +68,10 @@ function Clear() {
 	ctx.setTransform(1, 0, 0, 1, 0, 0);
 	ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
 }
+
+
+
+
 
 
 function hover_d(element) {
@@ -103,7 +104,29 @@ function unhover_u(element) {
 	element.setAttribute('src', '../images/uparrow-1.png');
 }
 
-// $(".scroller a").preventDefault();
+
+
+
+var topmenu = document.getElementById("topmenu");
+var sticky = topmenu.offsetTop;
+//var sticky = $(".topmenu").offset().top;
+
+function stickyScroll() {
+	if (window.pageYOffset >= sticky) {
+		$("#topmenu").addClass("sticky");
+	}
+	else {
+		$("#topmenu").removeClass("sticky");
+	}
+}
+
+window.onscroll = function() {
+	stickyScroll();
+}
+
+
+
+
 
 $(document).ready(function() {
 	console.log("initialised");
