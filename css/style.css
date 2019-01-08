@@ -18,12 +18,6 @@ body {
     margin-right: 20%;
 }
 
-@media screen and (max-width: 700px) {
-    html {
-        font-size: 26px;
-    }
-}
-
 header {
     background-image: url("../images/bg_header.png");
     background-repeat: no-repeat;
@@ -169,6 +163,92 @@ header img {
     position: center;
 }
 
+.pc a {
+    -moz-box-shadow: 2px 3px 0px 0px #cccccc;
+    -webkit-box-shadow: 2px 3px 0px 0px #cccccc;
+    box-shadow: 2px 3px 0px 0px #cccccc;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ffffff), color-stop(1, #f6f6f6));
+    background: -moz-linear-gradient(top, #ffffff 5%, #f6f6f6 100%);
+    background: -webkit-linear-gradient(top, #ffffff 5%, #f6f6f6 100%);
+    background: -o-linear-gradient(top, #ffffff 5%, #f6f6f6 100%);
+    background: -ms-linear-gradient(top, #ffffff 5%, #f6f6f6 100%);
+    background: linear-gradient(to bottom, #ffffff 5%, #f6f6f6 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#f6f6f6',GradientType=0);
+    background-color:#ffffff;
+    -moz-border-radius: 12px;
+    -webkit-border-radius: 12px;
+    border-radius: 12px;
+    border: 2px solid #dcdcdc;
+    display: inline-block;
+    cursor: pointer;
+    color:#666666;
+    font-family: Nagayama;
+    font-size: 19px;
+    font-weight: bold;
+    padding: 11px 40px;
+    text-decoration: none;
+    text-shadow: 3px 1px 0px #ededed;
+}
+
+.pc a:hover {
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #f6f6f6), color-stop(1, #ffffff));
+    background: -moz-linear-gradient(top, #f6f6f6 5%, #ffffff 100%);
+    background: -webkit-linear-gradient(top, #f6f6f6 5%, #ffffff 100%);
+    background: -o-linear-gradient(top, #f6f6f6 5%, #ffffff 100%);
+    background: -ms-linear-gradient(top, #f6f6f6 5%, #ffffff 100%);
+    background: linear-gradient(to bottom, #f6f6f6 5%, #ffffff 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f6f6f6', endColorstr='#ffffff',GradientType=0);
+    background-color:#f6f6f6;
+}
+
+.pc a:active {
+    position: relative;
+    top: 1px;
+}
+
+#consoles a {
+	-moz-box-shadow: 2px 3px 0px 0px #cccccc;
+	-webkit-box-shadow: 2px 3px 0px 0px #cccccc;
+	box-shadow: 2px 3px 0px 0px #cccccc;
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #ffffff), color-stop(1, #f6f6f6));
+	background: -moz-linear-gradient(top, #ffffff 5%, #f6f6f6 100%);
+	background: -webkit-linear-gradient(top, #ffffff 5%, #f6f6f6 100%);
+	background: -o-linear-gradient(top, #ffffff 5%, #f6f6f6 100%);
+	background: -ms-linear-gradient(top, #ffffff 5%, #f6f6f6 100%);
+	background: linear-gradient(to bottom, #ffffff 5%, #f6f6f6 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#f6f6f6',GradientType=0);
+	background-color:#ffffff;
+	-moz-border-radius: 12px;
+	-webkit-border-radius: 12px;
+	border-radius: 12px;
+	border: 2px solid #dcdcdc;
+	display: inline-block;
+	cursor: pointer;
+	color:#666666;
+	font-family: Otsutome;
+	font-size: 13px;
+	font-weight: bold;
+	padding: 7px 25px;
+	text-decoration: none;
+	text-shadow: 3px 1px 0px #ededed;
+}
+
+#consoles a:hover {
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0.05, #f6f6f6), color-stop(1, #ffffff));
+	background: -moz-linear-gradient(top, #f6f6f6 5%, #ffffff 100%);
+	background: -webkit-linear-gradient(top, #f6f6f6 5%, #ffffff 100%);
+	background: -o-linear-gradient(top, #f6f6f6 5%, #ffffff 100%);
+	background: -ms-linear-gradient(top, #f6f6f6 5%, #ffffff 100%);
+	background: linear-gradient(to bottom, #f6f6f6 5%, #ffffff 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f6f6f6', endColorstr='#ffffff',GradientType=0);
+	background-color:#f6f6f6;
+}
+
+#consoles a:active {
+	position: relative;
+	top: 1px;
+}
+
 #footer {
     display: block;
     width: 100%;
@@ -193,4 +273,12 @@ header img {
 #footer img {
     width: 10%;
     padding: 1.5%;
+}
+
+
+
+@media screen and (max-width: 700px) {
+    html {
+        font-size: 26px;
+    }
 }
