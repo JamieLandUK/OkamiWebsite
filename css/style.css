@@ -1,6 +1,7 @@
 * {
     margin: 0;
     padding: 0;
+    
 }
 
 html {
@@ -38,7 +39,7 @@ header img {
 }
 
 #topmenu {
-    position: relative;
+    position: sticky;
     left: 34.25%;
     z-index: 999;
     background: url("../images/navscroll.png") no-repeat;

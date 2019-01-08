@@ -8,10 +8,10 @@ var line_width_value = 1;
 var brushImage = new Image();
 
 function init() {
-	brushImage.src = "./images/test1.png";
+	brushImage.src = "./images/test1.jpg";
 
-	canvas = $("#drawingmain canvas")[0];
-	ctx = canvas.getContext("2d");
+	canvas = $("#drawingmain canvas");
+	ctx = canvas.get(0).getContext("2d");
 	line_width = $("#drawing_width");
 
 	$("#line_width").bind("change", (function (e) {
@@ -25,12 +25,14 @@ function init() {
 			x = e.pageX - this.offsetLeft;
 			y = e.pageY - this.offsetTop;
 			Draw(x, y, true);
+			console.log('('+x+', ' + y + ')');
 		}),
 		mousemove: (function (e) {
 			if (mouse_pressed) {
 				x = e.pageX - this.offsetLeft;
 				y = e.pageY - this.offsetTop;
 				Draw(e.pageX, e.pageY, true);
+				console.log('('+x+', ' + y + ')');
 			}
 		}),
 		mouseup: (function (e) {
@@ -107,22 +109,24 @@ function unhover_u(element) {
 
 
 
-var topmenu = document.getElementById("topmenu");
-var sticky = topmenu.offsetTop;
-//var sticky = $(".topmenu").offset().top;
+/*window.onscroll = function() {
+	var topmenu = $(".topmenu");
+	if (topmenu.length) {
+		var sticky = topmenu.offset().top;
+		stickyScroll(sticky);
+	}
+}
 
-function stickyScroll() {
+function stickyScroll(sticky) {
 	if (window.pageYOffset >= sticky) {
 		$("#topmenu").addClass("sticky");
 	}
 	else {
 		$("#topmenu").removeClass("sticky");
 	}
-}
+}*/
 
-window.onscroll = function() {
-	stickyScroll();
-}
+
 
 
 
