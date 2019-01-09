@@ -246,11 +246,6 @@ header img {
     background-color:#f6f6f6;
 }
 
-.pc a:active {
-    position: relative;
-    top: 1px;
-}
-
 #consoles a {
 	-moz-box-shadow: 2px 3px 0px 0px #cccccc;
 	-webkit-box-shadow: 2px 3px 0px 0px #cccccc;
@@ -289,7 +284,7 @@ header img {
 	background-color:#f6f6f6;
 }
 
-#consoles a:active {
+.pc a:active, #consoles a:active {
 	position: relative;
 	top: 1px;
 }
