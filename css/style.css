@@ -145,13 +145,24 @@ header img {
     border: solid #000000;
 }
 
-#drawingmain canvas {
+#backgroundlayer {
     width: 55%;
     height: 55%;
     background-color: #cacaca;
     border: solid #000000;
     margin-left: 21.75%;
     margin-top: 2%;
+    z-index: 100;
+}
+
+#drawinglayer {
+    position: absolute;
+    left: 595px;
+    top: 1280px;
+    width: 591px;
+    height: 295px;
+    color: #ffffff00;
+    z-index: 200;
 }
 
 #drawingwidth {
@@ -161,6 +172,40 @@ header img {
 #drawingbackgrounds img {
     width: 70px;
     position: center;
+}
+
+#gallery {
+    position: relative;
+    width: 1055px;
+}
+
+#scrollbox {
+    width: 475px;
+    float: left;
+    line-height: 0;
+    padding-top: 51px;
+}
+
+#scrollbox ul {
+    display: block;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+#galleryviewer { 
+    float: left;
+    margin-left: 1px;
+    width: 552px;
+    height: 439px;
+    display: block;
+    text-align: left;
+}
+
+#galleryintro, #gallerystory {
+    margin: -7px 35px 0px 60px;
+    letter-spacing: 1px;
+    line-height: 22px;
 }
 
 .pc a {
@@ -262,6 +307,7 @@ header img {
     z-index: 9;
     font-size: 0.6rem;
     text-align: left;
+    color: white;
     padding: 0%;
     padding-left: 20%;
     margin: 0%;

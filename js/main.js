@@ -1,31 +1,50 @@
-var canvas;
+var canvas, canvas2;
 var mouse_pressed = false;
-var prev_x, prev_y, ctx;
+var prev_x, prev_y, ctx, ctx2;
 var x, y;
+var background;
 
-var line_width
+var line_width;
 var line_width_value = 1;
 var brushImage = new Image();
+var backgroundImage = new Image();
 
 function init() {
-	brushImage.src = "./images/test1.jpg";
+	brushImage.src = "./images/brush.png";
 
-	canvas = $("#drawingmain canvas");
+	canvas = $("#drawinglayer");
+	canvas2 = $("#backgroundlayer");
 	ctx = canvas.get(0).getContext("2d");
-	line_width = $("#drawing_width");
+	ctx2 = canvas2.get(0).getContext("2d");
+	line_width = $('input[type=range]');
+	background = $('input:radio[name=backgrounds]');
 
-	$("#line_width").bind("change", (function (e) {
-		console.log(e.value);
+	line_width.on("change", (function (e) {
+		console.log(line_width.val());
 		line_width_value = e.value;
 	}));
 
-	$("#drawingmain canvas").bind({
+	background.on("change", (function (e) {
+		console.log("activated")
+		if ($("#bgchoice1").prop("checked", true)) {
+			backgroundImage.src = "./images/background1.png";
+		}
+		else if ($("#bgchoice2").prop("checked", true)) {
+			backgroundImage.src = "./images/background2.png";
+		}
+		else if ($("#bgchoice3").prop("checked", true)) {
+			backgroundImage.src = "./images/background3.png";
+		}
+		ctx2.drawImage(backgroundImage, 0, 0, 319, 179);
+	}));
+
+	canvas.on({
 		mousedown: (function (e) {
 			mouse_pressed = true;
 			x = e.pageX - this.offsetLeft;
 			y = e.pageY - this.offsetTop;
 			Draw(x, y, true);
-			console.log('('+x+', ' + y + ')');
+			console.log('(' + x + ', ' + y + ')');
 		}),
 		mousemove: (function (e) {
 			if (mouse_pressed) {
