@@ -17,7 +17,6 @@ function init() {
 	ctx = canvas.get(0).getContext("2d");
 	ctx2 = canvas2.get(0).getContext("2d");
 	line_width = $('input[type=range]');
-	background = $('input:radio[name=backgrounds]');
 
 	line_width.on("change", (function (e) {
 		console.log(line_width.val());
