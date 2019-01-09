@@ -24,8 +24,10 @@ function init() {
 		line_width_value = e.value;
 	}));
 
-	background.on("change", (function (e) {
-		console.log("activated")
+	/*background.on("change", (function (e) {
+		ctx2.setTransform(1, 0, 0, 1, 0, 0);
+		ctx2.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+		console.log("activated");
 		if ($("#bgchoice1").prop("checked", true)) {
 			backgroundImage.src = "./images/background1.png";
 		}
@@ -36,7 +38,26 @@ function init() {
 			backgroundImage.src = "./images/background3.png";
 		}
 		ctx2.drawImage(backgroundImage, 0, 0, 319, 179);
-	}));
+	}));*/
+
+	$("#drawingbackgrounds input:radio").click(function() {
+		if ($(this).val() === '1') {
+			Clear(ctx2);
+			backgroundImage.src = "./images/background1.png";
+			ctx2.drawImage(backgroundImage, 0, 0, 319, 179);
+		}
+		else
+		if ($(this).val() === '2') {
+			Clear(ctx2);
+			backgroundImage.src = "./images/background2.png";
+			ctx2.drawImage(backgroundImage, 0, 0, 319, 179);
+		}
+		else
+		if ($(this).val() === '3') {
+			backgroundImage.src = "./images/background3.png";
+			ctx2.drawImage(backgroundImage, 0, 0, 319, 179);
+		}
+	});
 
 	canvas.on({
 		mousedown: (function (e) {
@@ -85,9 +106,9 @@ function Draw(x, y, isDown) {
 	prev_y = y;
 }
 
-function Clear() {
-	ctx.setTransform(1, 0, 0, 1, 0, 0);
-	ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+function Clear(current) {
+	current.setTransform(1, 0, 0, 1, 0, 0);
+	current.clearRect(0, 0, current.canvas.width, current.canvas.height);
 }
 
 
