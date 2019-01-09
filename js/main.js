@@ -45,15 +45,15 @@ function init() {
 	canvas.on({
 		mousedown: function (e) {
 			mouse_pressed = true;
-			x = e.pageX - this.offsetLeft;
-			y = e.pageY - this.offsetTop;
+			x = e.clientX - (canvas.offsetLeft - window.pageXOffset);
+			y = e.clientY - (canvas.offsetTop - window.pageYOffset);
 			Draw(x, y, false);
 			console.log('(' + x + ', ' + y + ')');
 		},
 		mousemove: function (e) {
 			if (mouse_pressed) {
-				x = e.pageX - this.offsetLeft;
-				y = e.pageY - this.offsetTop;
+				x = e.clientX - (canvas.offsetLeft - window.pageXOffset);
+				y = e.clientY - (canvas.offsetTop - window.pageYOffset);
 				Draw(e.pageX, e.pageY, true);
 				console.log('('+x+', ' + y + ')');
 			}
@@ -66,6 +66,7 @@ function init() {
 		}
 	});
 }
+
 
 // x = e.pageX - this.offsetLeft;
 // y = e.pageY - this.offsetTop;
