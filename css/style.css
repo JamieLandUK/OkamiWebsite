@@ -105,7 +105,7 @@ header img {
     flex-flow: column;
     align-items: center;
     justify-content: center;
-    width: 100%;
+    width: 95%;
     flex: 1;
 }
 
@@ -126,7 +126,7 @@ header img {
 
 #intro2 img, #intro3 img {
     width: 30%;
-    height: 30%;
+    height: auto;
 }  
 
 #intro1 p, #intro2 p, #intro3 p {
