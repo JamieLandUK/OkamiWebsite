@@ -66,22 +66,6 @@ function init() {
 			mouse_pressed = false;
 		}
 	});
-
-	$("#scroller").on({
-		mouseenter: function () {
-			var i = 2;
-			while (true) {
-				if (i > 3) {
-					i = 1;
-				}
-				$(this).attr('src', '../images/uparrow-' + i + '.png');
-				i++;
-			}
-		},
-		mouseleave: function () {
-			$(this).attr('src', '../images/uparrow-1.png');
-		}
-	});
 }
 
 // x = e.pageX - this.offsetLeft;
