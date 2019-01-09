@@ -47,7 +47,7 @@ function init() {
 			mouse_pressed = true;
 			x = e.pageX - this.offsetLeft;
 			y = e.pageY - this.offsetTop;
-			Draw(x, y, true);
+			Draw(x, y, false);
 			console.log('(' + x + ', ' + y + ')');
 		},
 		mousemove: function (e) {
@@ -73,8 +73,15 @@ function init() {
 
 function Draw(x, y, isDown) {
 	if (isDown) {
-		ctx.globalAlpha = 0.8;
-		ctx.drawImage(brushImage, x, y, line_width_value, line_width_value);
+		ctx.beginPath();
+		ctx.moveTo(lastX, lastY);
+		ctx.lineTo(x, y);
+		ctx.lineJoin = "round";
+		ctx.lineWidth = line_widthval;
+		ctx.closePath();
+		ctx.stroke();
+		/*ctx.globalAlpha = 0.8;
+		ctx.drawImage(brushImage, x, y, line_width_value, line_width_value);*/
 	}
 	/*
 	ctx.beginPath();
