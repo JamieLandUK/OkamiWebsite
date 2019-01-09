@@ -68,6 +68,7 @@
 					<canvas id="drawinglayer"></canvas>
 					<div id="drawingui">
 						<input id="drawingwidth" type="range" value="1" min="1">
+						<button id="drawingclear" onclick="Clear($('#drawinglayer').get(0).getContext('2d'))">Clear</button>
 						<div id="drawingbackgrounds">
 							<input type="radio" id="bgchoice1" name="backgrounds" value="1">
 							<img src="images/background1.png">
