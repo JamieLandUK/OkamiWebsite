@@ -24,22 +24,6 @@ function init() {
 		line_width_value = e.value;
 	}));
 
-	/*background.on("change", (function (e) {
-		ctx2.setTransform(1, 0, 0, 1, 0, 0);
-		ctx2.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
-		console.log("activated");
-		if ($("#bgchoice1").prop("checked", true)) {
-			backgroundImage.src = "./images/background1.png";
-		}
-		else if ($("#bgchoice2").prop("checked", true)) {
-			backgroundImage.src = "./images/background2.png";
-		}
-		else if ($("#bgchoice3").prop("checked", true)) {
-			backgroundImage.src = "./images/background3.png";
-		}
-		ctx2.drawImage(backgroundImage, 0, 0, 319, 179);
-	}));*/
-
 	$("#drawingbackgrounds input:radio").click(function() {
 		if ($(this).val() === '1') {
 			Clear(ctx2);
@@ -60,27 +44,43 @@ function init() {
 	});
 
 	canvas.on({
-		mousedown: (function (e) {
+		mousedown: function (e) {
 			mouse_pressed = true;
 			x = e.pageX - this.offsetLeft;
 			y = e.pageY - this.offsetTop;
 			Draw(x, y, true);
 			console.log('(' + x + ', ' + y + ')');
-		}),
-		mousemove: (function (e) {
+		},
+		mousemove: function (e) {
 			if (mouse_pressed) {
 				x = e.pageX - this.offsetLeft;
 				y = e.pageY - this.offsetTop;
 				Draw(e.pageX, e.pageY, true);
 				console.log('('+x+', ' + y + ')');
 			}
-		}),
-		mouseup: (function (e) {
+		},
+		mouseup: function (e) {
 			mouse_pressed = false;
-		}),
-		mouseleave: (function (e) {
+		},
+		mouseleave: function (e) {
 			mouse_pressed = false;
-		})
+		}
+	});
+
+	$("#scroller").on({
+		mouseenter: function () {
+			var i = 2;
+			while (true) {
+				if (i > 3) {
+					i = 1;
+				}
+				$(this).attr('src', '../images/uparrow-' + i + '.png');
+				i++;
+			}
+		},
+		mouseleave: function () {
+			$(this).attr('src', '../images/uparrow-1.png');
+		}
 	});
 }
 
@@ -116,38 +116,6 @@ function Clear(current) {
 
 
 
-function hover_d(element) {
-	var i = 2;
-	while (true) {
-		if (i > 3) {
-			i = 1;
-		}
-		element.setAttribute('src', '../images/downarrow-' + i + '.png');
-		i++;
-	}
-}
-
-function unhover_d(element) {
-	element.setAttribute('src', '../images/downarrow-1.png');
-}
-
-function hover_u(element) {
-	var i = 2;
-	while (true) {
-		if (i > 3) {
-			i = 1;
-		}
-		element.setAttribute('src', '../images/uparrow-' + i + '.png');
-		i++;
-	}
-}
-
-function unhover_u(element) {
-	element.setAttribute('src', '../images/uparrow-1.png');
-}
-
-
-
 
 /*window.onscroll = function() {
 	var topmenu = $(".topmenu");
@@ -165,9 +133,6 @@ function stickyScroll(sticky) {
 		$("#topmenu").removeClass("sticky");
 	}
 }*/
-
-
-
 
 
 
