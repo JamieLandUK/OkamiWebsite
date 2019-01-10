@@ -8,7 +8,6 @@ var line_width;
 var line_width_value = 1;
 
 function init() {
-	brushImage.src = "./images/brush.png";
 
 	canvas = $("#canvas");
 	ctx = canvas.get(0).getContext("2d");
@@ -22,11 +21,13 @@ function init() {
 		mousedown: function (e) {
 			mouse_pressed = true;
 			var mousePosition = getMousePosition(canvas.get(0), e);
+			console.log('(' + mousePosition.x + ', ' + mousePosition.y + ')');
 			Draw(mousePosition.x, mousePosition.y, false);
 		},
 		mousemove: function (e) {
 			if (mouse_pressed) {
 				var mousePosition = getMousePosition(canvas.get(0), e);
+				console.log('(' + mousePosition.x + ', ' + mousePosition.y + ')');
 				Draw(mousePosition.x, mousePosition.y, true);
 			}
 		},
@@ -48,6 +49,10 @@ function getMousePosition(canvas, evt) {
     };
 }
 
+// x = e.pageX - this.offsetLeft;
+// y = e.pageY - this.offsetTop;
+// console.log('x=', x, ' y=', y);
+
 function Draw(x, y, isDown) {
 	if (isDown) {
 		ctx.beginPath();
@@ -62,6 +67,21 @@ function Draw(x, y, isDown) {
 	}
 	prev_x = x;
 	prev_y = y;
+	
+	/*
+	ctx.beginPath();
+	ctx.moveTo(lastX, lastY);
+	ctx.lineTo(x, y);
+	ctx.lineJoin = "round";
+	ctx.lineWidth = line_widthval;
+	ctx.closePath();
+	ctx.stroke();
+	*/
+
+	/*
+	ctx.globalAlpha = 0.8;
+	ctx.drawImage(brushImage, x, y, line_width_value, line_width_value);
+	*/
 }
 
 function Clear() {
