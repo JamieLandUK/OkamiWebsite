@@ -39,7 +39,8 @@ function CreateGallery() {
         character_name[i] = data.character.items[i].name;
         character_intro[i] = data.character.items[i].intro;
         character_story[i] = data.character.items[i].story;
-        $('#scrollbox ul').append('<li><a href="/">'+ data.character.items[i].name +'</a></li>');
+        $('#character-list').append('<a class="character-name" href="#">'+ data.character.items[i].name +'</a>');
+        //$('#character-list').append('<a href="#"><div class="character-name">'+ data.character.items[i].name +'</div></a>');
         if (i == 4) {
             SetUpGallery();
         }
@@ -47,8 +48,7 @@ function CreateGallery() {
 }
 
 function SetUpGallery() {
-    console.log("Gallery Init");
-    $('#scrollbox a').click(function(e) {
+    $('#character-list a').click(function(e) {
         e.preventDefault();
 
         var current_click = $(this).text();
@@ -65,13 +65,13 @@ function SetUpGallery() {
             }
         });
 
-        $('#galleryviewer').fadeOut(100, function() {
-            $('#galleryviewer').html('<img src="images/characters/'+ current_name +'.png"><p>'+ current_intro +'</p><p>'+ current_story +'</p>');
-            $('#galleryviewer').fadeIn(100);
+        $('#character-viewer').fadeOut(100, function() {
+            $('#character-viewer').html('<img class="character-image" style="width: 30%;" src="images/characters/'+ current_name +'.png"><p class="character-intro">'+ current_intro +'</p><p class="character-story">'+ current_story +'</p>');
+            $('#character-viewer').fadeIn(100);
         });
     });
 
-    var initial_name = $('#scrollbox a').first().text();
+    var initial_name = $('#character-list a').first().text();
     console.log(initial_name);
     var initial_intro;
     var initial_story;
@@ -82,8 +82,8 @@ function SetUpGallery() {
         }
     });
 
-    $('#galleryviewer').fadeOut(100, function() {
-        $('#galleryviewer').html('<img src="images/characters/'+ initial_name +'.png"><p>'+ initial_intro +'</p><p>'+ initial_story +'</p>');
-        $('#galleryviewer').fadeIn(100);
+    $('#character-viewer').fadeOut(100, function() {
+        $('#character-viewer').html('<img class="character-image" style="width: 30%;" src="images/characters/'+ initial_name +'.png"><p class="character-intro">'+ initial_intro +'</p><p class="character-story">'+ initial_story +'</p>');
+        $('#character-viewer').fadeIn(100);
     });
 }

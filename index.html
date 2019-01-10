@@ -1,122 +1,72 @@
 <!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<meta name="author" content="Jamie Land">
-		<title>Okami HD</title>
-		
-		<!-- CSS and JavaScript -->
-		<link rel="stylesheet" href="css/style.css">
-		
-		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Okami HD</title>
+      
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 		<script type="text/javascript" src="js/gallery.js"></script>
 		<script type="text/javascript" src="js/main.js"></script>
+  </head>
 
-		<style>
-		@font-face {
-    		font-family: Nagayama;
-    		src: url('Nagayama.otf');
-		}
-
-		@font-face {
-    		font-family: Otsutome;
-    		src: url('Otsutome.ttf');
-		}
-		</style>
-	</head>
-
-	<body>
-		<header>
-			<img src="images/logo.png">
-		</header>
-
-		<div id="main">
-			<div id="topmenu">
-				<ul>
-					<li><a href="#" class="currentpage">Home</a></li>
-					<li><a href="#drawing" >Drawing</a></li>
-					<li><a href="#tales" >Tales</a></li>
-					<li><a href="#buying" >Buying</a></li>
-				</ul>
-				<a href="#" id="scroller"><img src="images/uparrow-1.png"></a>
-			</div>
-
-			<section id="intro">
-				<div id="head">
-					<blockquote>"Ah... Amaterasu. Origin of all that is good and mother to us all..."</blockquote>
-				</div>
-				<div id="intro1">	
-					<iframe width="480" height="270"
-						src="https://www.youtube.com/embed/G6NPoX7_ehc">
-					</iframe>
-					<p>Take your part in this epic tale as the Sun Goddess, Amaterasu. She takes the form of a wolf as she travels around the country of Nippon, based on ancient Japan as told by mythology spawned from the time!</p>
-				</div>
-				<div id="intro2">
-					<img src="images/screen3.jpg">
-					<p>Change the land around you with your celestial powers. It's as simple as drawing on the paper! With them, the power of the sun, the moon, water, life, slashes and even more are on your side against your enemies!</p>
-				</div>
-				<div id="intro3">
-					<img src="images/screen2.jpg">
-					<p>However, the forces of the evil eight-headed Orochi won't let your journey be simple... So crush them using Amaterasu's Godly weapons - Swords, Rosary Beads, and Divine Shields - with the aid of your Celestial Brush and the wandering artist Issun!</p>
-				</div>
-			</section>
-
-			<section id="drawing">
-				<div id="drawingmain">
-					<canvas id="backgroundlayer"></canvas>
-					<canvas id="drawinglayer"></canvas>
-					<div id="drawingui">
-						<input id="drawingwidth" type="range" value="1" min="1">
-						<button id="drawingclear" onclick="Clear($('#drawinglayer').get(0).getContext('2d'))">Clear</button>
-						<div id="drawingbackgrounds">
-							<input type="radio" id="bgchoice1" name="backgrounds" value="1">
-							<img src="images/background1.png">
-							<input type="radio" id="bgchoice2" name="backgrounds" value="2">
-							<img src="images/background2.png">
-							<input type="radio" id="bgchoice3" name="backgrounds" value="3">
-							<img src="images/background3.png">
-						</div>
-					</div>
-				</div>
-			</section>
-
-			<section id="tales">
-				<div id="gallery">
-					<div id="scrollbox">
-						<ul class="characters"></ul>
-					</div>
-					<div id="galleryviewer">
-						<img id="gallerypic">
-						<p id="galleryintro"></p>
-						<p id="gallerystory"></p>
-					</div>
-					<script type="text/javascript">
-						$(document).ready(function(){
-							CreateGallery();
-						});
-					</script>
-				</div>
-			</section>
-
-			<section id="buying">
-				<div class="pc">
-					<a href="#">Steam</a>
-				</div>
-				<div class="pc">
-					<a href="#">The Humble Store</a>
-				</div>
-				<div id="consoles">
-					<a href="#" id="ps4">Playstation 4</a>
-					<a href="#" id="xbone">Xbox One</a>
-					<a href="#" id="switch">Nintendo Switch</a>
-				</div>
-			</section>
-			<div id="footer">
-				<p>©Okami is wholly owned by CAPCOM CO., LTD. 2006, 2017. ALL RIGHTS RESERVED. Nintendo Switch is a trademark of Nintendo. ©2017 Nintendo. Playstation 4 is a 	trademark of Sony Interactive Entertainment. ©2014 Sony.</p>
-				<img id="esrb" src="images/esrb.png">
-				<img id="capcomlogo" src="images/capcom.png">
-			</div>
-		</div>
-	</body>
+  <body>
+    <div id="wrapper">
+      <div id="body_main">
+        <div id="logo-wrapper"><img src="images/logo.png" class="logo-style"></div>
+        <div id="board">
+          <h1>"Ah... Amaterasu. Origin of all that is good and mother to us all..."</h1>
+          <div class="section-box">
+            <iframe width="480" height="270" src="https://www.youtube.com/embed/G6NPoX7_ehc" class="leftFloat"></iframe>
+            <p>Take your part in this epic tale as the Sun goddess, Amaterasu. She takes the form of a wolf as she travels around the country of Nippon, based on ancient Japan as told by mythology spawn from the time!</p>
+          </div>
+          <div class="section-box">
+            <img src="images/pic1.jpg" class="imageStyle rightFloat">
+            <p>Change the land around you with your celestial powers. It's as simple as drawing on the paper! With them, the power of the sun, the moon, water, life, slashes and even more are on your side against your enemies!</p>
+          </div>
+          <div class="section-box">
+            <img src="images/pic2.jpg" class="imageStyle leftFloat">
+            <p>However, the forces of the evil eight-headed Orochi won't let your journey be simple... So crush them using Amaterasu's Godly weapons - Swords, Rosary Beads, and Divine Shields - with the aid of your Celestial Brush and the wandering artist Issun!</p>
+          </div>
+          <div class="section-box canvas-wrapper">
+            <canvas id="canvas" class="canvas-style"></canvas>
+            <div id="controller">
+              <div id="left-controls">
+                <input id="range-slider" type="range" class="controlStyle" value="1" min="1">
+                <button onclick="Clear()" class="controlStyle">Clear</button>
+              </div>
+              <div id="right-controls">
+                <img onclick="$('.canvas-style').css('background-image', 'url(images/background1.png')" width="120" height="80" src="./images/background1.png">
+                <img onclick="$('.canvas-style').css('background-image', 'url(images/background2.png')" width="120" height="80" src="./images/background2.png">
+                <img onclick="$('.canvas-style').css('background-image', 'url(images/background3.png')" width="120" height="80" src="./images/background3.png">
+              </div>
+            </div>
+          </div>
+          <div class="section-box characters">
+            <div id="character-container">
+              <div id="character-list">
+                <!-- To be input into: gallery.js -->
+              </div>
+              <div id="character-viewer">
+                <!-- To be input into: gallery.js -->
+              </div>
+            </div>
+            <script type="text/javascript">
+              $(document).ready(function(){
+                CreateGallery();
+              });
+            </script>
+          </div>
+          <div id="footer">
+            <img src="images/capcom.png" class="imageSize">
+          </div>
+        </div>
+        <div id="trademark">
+          © Okami is wholly owned by CAPCOM CO., LTD. 2006, 2017. ALL RIGHTS RESERVED. <br/>© 2017 Nintendo. Nintendo Switch is a trademark of Nintendo. <br/>© 2014 Sony. Playstation 4 is a trademark of Sony Interactive Entertainment.
+        </div>
+      </div>
+    </div>
+  </body>
 </html>

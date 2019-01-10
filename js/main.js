@@ -1,6 +1,7 @@
-var canvas, canvas2;
+var canvas;
 var mouse_pressed = false;
-var prev_x, prev_y, ctx, ctx2;
+var prev_x, prev_y;
+var ctx;
 var x, y;
 var background;
 
@@ -12,48 +13,26 @@ var backgroundImage = new Image();
 function init() {
 	brushImage.src = "./images/brush.png";
 
-	canvas = $("#drawinglayer");
-	canvas2 = $("#backgroundlayer");
+	canvas = $("#canvas");
 	ctx = canvas.get(0).getContext("2d");
-	ctx2 = canvas2.get(0).getContext("2d");
-	line_width = $('input[type=range]');
+	line_width = $('input[type=range]')
 
-	line_width.on("change", (function (e) {
-		console.log(line_width.val());
-		line_width_value = e.value;
+	line_width.on("change", (function () {
+		line_width_value = line_width.val();
 	}));
-
-	$("#drawingbackgrounds input:radio").click(function() {
-		if ($(this).val() === '1') {
-			Clear(ctx2);
-			backgroundImage.src = "./images/background1.png";
-			ctx2.drawImage(backgroundImage, 0, 0, 319, 179);
-		}
-		else
-		if ($(this).val() === '2') {
-			Clear(ctx2);
-			backgroundImage.src = "./images/background2.png";
-			ctx2.drawImage(backgroundImage, 0, 0, 319, 179);
-		}
-		else
-		if ($(this).val() === '3') {
-			backgroundImage.src = "./images/background3.png";
-			ctx2.drawImage(backgroundImage, 0, 0, 319, 179);
-		}
-	});
 
 	canvas.on({
 		mousedown: function (e) {
 			mouse_pressed = true;
-			x = e.clientX - (canvas.offsetLeft - window.pageXOffset);
-			y = e.clientY - (canvas.offsetTop - window.pageYOffset);
+			x = e.pageX - this.offsetLeft;
+			y = e.pageY - this.offsetTop;
 			Draw(x, y, false);
 			console.log('(' + x + ', ' + y + ')');
 		},
 		mousemove: function (e) {
 			if (mouse_pressed) {
-				x = e.clientX - (canvas.offsetLeft - window.pageXOffset);
-				y = e.clientY - (canvas.offsetTop - window.pageYOffset);
+				x = e.pageX - this.offsetLeft;
+				y = e.pageY - this.offsetTop;
 				Draw(e.pageX, e.pageY, true);
 				console.log('('+x+', ' + y + ')');
 			}
@@ -75,15 +54,18 @@ function init() {
 function Draw(x, y, isDown) {
 	if (isDown) {
 		ctx.beginPath();
-		ctx.moveTo(lastX, lastY);
+		ctx.moveTo(prev_x, prev_y);
 		ctx.lineTo(x, y);
 		ctx.lineJoin = "round";
-		ctx.lineWidth = line_widthval;
+		ctx.lineWidth = line_width_value;
+		ctx.strokeStyle = '#000000';
 		ctx.closePath();
 		ctx.stroke();
-		/*ctx.globalAlpha = 0.8;
-		ctx.drawImage(brushImage, x, y, line_width_value, line_width_value);*/
+		
 	}
+	prev_x = x;
+	prev_y = y;
+	
 	/*
 	ctx.beginPath();
 	ctx.moveTo(lastX, lastY);
@@ -93,37 +75,17 @@ function Draw(x, y, isDown) {
 	ctx.closePath();
 	ctx.stroke();
 	*/
-	prev_x = x;
-	prev_y = y;
+
+	/*
+	ctx.globalAlpha = 0.8;
+	ctx.drawImage(brushImage, x, y, line_width_value, line_width_value);
+	*/
 }
 
-function Clear(current) {
-	current.setTransform(1, 0, 0, 1, 0, 0);
-	current.clearRect(0, 0, current.canvas.width, current.canvas.height);
+function Clear() {
+	ctx.setTransform(1, 0, 0, 1, 0, 0);
+	ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
 }
-
-
-
-
-
-
-
-/*window.onscroll = function() {
-	var topmenu = $(".topmenu");
-	if (topmenu.length) {
-		var sticky = topmenu.offset().top;
-		stickyScroll(sticky);
-	}
-}
-
-function stickyScroll(sticky) {
-	if (window.pageYOffset >= sticky) {
-		$("#topmenu").addClass("sticky");
-	}
-	else {
-		$("#topmenu").removeClass("sticky");
-	}
-}*/
 
 
 
