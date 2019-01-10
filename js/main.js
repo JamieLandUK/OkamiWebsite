@@ -54,6 +54,7 @@ function getMousePosition(canvas, evt) {
 // console.log('x=', x, ' y=', y);
 
 function Draw(x, y, isDown) {
+	x /= 3.15; y /= 3.15;
 	if (isDown) {
 		ctx.beginPath();
 		ctx.moveTo(prev_x, prev_y);
