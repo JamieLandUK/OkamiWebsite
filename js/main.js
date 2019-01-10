@@ -3,12 +3,9 @@ var mouse_pressed = false;
 var prev_x, prev_y;
 var ctx;
 var x, y;
-var background;
 
 var line_width;
 var line_width_value = 1;
-var brushImage = new Image();
-var backgroundImage = new Image();
 
 function init() {
 	brushImage.src = "./images/brush.png";
@@ -24,17 +21,13 @@ function init() {
 	canvas.on({
 		mousedown: function (e) {
 			mouse_pressed = true;
-			x = e.pageX - this.offsetLeft;
-			y = e.pageY - this.offsetTop;
-			Draw(x, y, false);
-			console.log('(' + x + ', ' + y + ')');
+			var mousePosition = getMousePosition(canvas.get(0), e);
+			Draw(mousePosition.x, mousePosition.y, false);
 		},
 		mousemove: function (e) {
 			if (mouse_pressed) {
-				x = e.pageX - this.offsetLeft;
-				y = e.pageY - this.offsetTop;
-				Draw(e.pageX, e.pageY, true);
-				console.log('('+x+', ' + y + ')');
+				var mousePosition = getMousePosition(canvas.get(0), e);
+				Draw(mousePosition.x, mousePosition.y, true);
 			}
 		},
 		mouseup: function (e) {
@@ -47,9 +40,13 @@ function init() {
 }
 
 
-// x = e.pageX - this.offsetLeft;
-// y = e.pageY - this.offsetTop;
-// console.log('x=', x, ' y=', y);
+function getMousePosition(canvas, evt) {
+	var rect = canvas.getBoundingClientRect();
+    return {
+        x: evt.clientX - rect.left,
+        y: evt.clientY - rect.top
+    };
+}
 
 function Draw(x, y, isDown) {
 	if (isDown) {
@@ -65,21 +62,6 @@ function Draw(x, y, isDown) {
 	}
 	prev_x = x;
 	prev_y = y;
-	
-	/*
-	ctx.beginPath();
-	ctx.moveTo(lastX, lastY);
-	ctx.lineTo(x, y);
-	ctx.lineJoin = "round";
-	ctx.lineWidth = line_widthval;
-	ctx.closePath();
-	ctx.stroke();
-	*/
-
-	/*
-	ctx.globalAlpha = 0.8;
-	ctx.drawImage(brushImage, x, y, line_width_value, line_width_value);
-	*/
 }
 
 function Clear() {
